@@ -10,21 +10,30 @@ body{
 .header{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin: 0 100px;
 }
+
 .header>img{
     height: 150px;
+    margin-right: auto;
 }
-.nav-list{
+.header>button{
+    margin: 1%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    
+}
+
+.navList{
     display: flex;
     flex-direction: row;
     list-style: none;
     gap: 3vw;
 
 }
-.nav-list>li>a{
+.navList>li>a{
     text-decoration: none;
     font-size: 1.4rem;
     color: black;
@@ -37,11 +46,20 @@ body{
 }
 
 
+.body>.searchBar>input{
+    padding: 5px;
+    
+    font-size: 1.5rem;
+    border-radius: 10px;
+
+}
 .body>.searchBar{
     margin: 10px 10vw;
     
+    
 
 }
+
 .container{
     display: flex;
     flex-wrap: wrap;
@@ -52,21 +70,60 @@ body{
 
 .restaurantCard{
     width: 250px;
-    height: 250px;
-    border: 2px solid black;
-    overflow: hidden;
+    height: 300px;
+    border: 4px solid black;
+    border-radius: 5px;
     text-overflow: ellipsis;
+    overflow: hidden;
+    cursor:pointer;
+    
     
 
 }
 .restaurantCard>img{
-    max-width: 200px;
+    max-width: 250px;
     margin: 0 auto;
     display: block;
 }
 .restaurantCard>h1{
     margin: 0;
     
+}
+.shimmerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    gap: 10px;
+
+}
+
+.shimmerItem{
+    width: 250px;
+    height: 300px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 5px 5px 5px  ;
+    gap: 2px;
+    
+
+}
+.shimmerItem>.shimmerImage{
+    margin: 0;
+    height: 200px;
+    width: 250px;
+    border-radius: 10%;
+    background-color: rgb(165, 165, 165);
+}
+.shimmerItem>.shimmerTitle{
+    height: 20px;
+    width: 240px;
+    border-radius: 10px;
+    background-color: rgb(165, 165, 165);
+
 }
 
 
