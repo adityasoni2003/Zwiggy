@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import RestaurantCard from "./restaurant"
 import { SWIGGY_API_URL } from "../config"
 import Shimmer from "./shimmer";
+import { Link } from "react-router-dom";
 
 
 
@@ -66,7 +67,13 @@ const Body = ()=>{
                     filteredRestaurants.map((restaurant)=>{
 
                         return(
-                            <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
+                            <Link to={`restaurant/${restaurant.data.id}`}>
+                                <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
+
+                            </Link>
+                            
+                           
+                            
                         )
                     })
                 }

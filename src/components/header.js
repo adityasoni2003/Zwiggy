@@ -10,16 +10,16 @@ const Header = ()=>{
         <div className='header'>
             <img src={logo} alt="Logo"  className='logo'/>
             <ul className='navList'>
-                <Link >
+                <Link to={"/"}>
                 <li>Home</li>
                 </Link>
-                <Link>
+                <Link to={"/about"}>
                 <li>About Us</li>
                 </Link>
-                <Link>
+                <Link to={"/contact"}>
                 <li>Contact Us</li>
                 </Link>
-                <Link>
+                <Link to={"/cart"}>
                 <li>Cart</li>
                 </Link>
             </ul>
