@@ -8,6 +8,7 @@ body{
     justify-content: center;
 }
 .header{
+    width: 70vw;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -15,9 +16,13 @@ body{
     margin: 0 100px;
 }
 
-.header>img{
-    height: 150px;
+.header>a{
     margin-right: auto;
+
+}
+.header>a>img{
+    height: 150px;
+    
 }
 .header>button{
     margin: 1%;
@@ -33,7 +38,7 @@ body{
     gap: 3vw;
 
 }
-.navList>li>a{
+.navList>a{
     text-decoration: none;
     font-size: 1.4rem;
     color: black;
@@ -89,6 +94,13 @@ body{
     margin: 0;
     
 }
+.restaurantDishes{
+    height: 60vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
 .shimmerContainer{
     display: flex;
     flex-wrap: wrap;

@@ -9,6 +9,7 @@ import Error from './components/error'
 import About from './components/about'
 import Contact from './components/contact'
 import RestaurantMenu from './components/restaurantMenu'
+import Profile from './components/profile'
 
 
 
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
       {path: "/",
       element: <Body/>,},
       {path: "/about",
-      element: <About/>,},
+      element: <About/>,
+      children:[{
+        path:'profile',
+        element:<Profile/>,
+      }]},
       {path: "/contact",
       element: <Contact/>,},
       {path:"/restaurant/:id",

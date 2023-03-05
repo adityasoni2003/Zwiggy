@@ -4,7 +4,7 @@ import RestaurantCard from "./restaurant"
 import { SWIGGY_API_URL } from "../config"
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
-
+import {filterRestaurant} from '../utils/helper'
 
 
 
@@ -13,20 +13,23 @@ const Body = ()=>{
     const [searchVal , setSearchVal] = useState();
     const [allRestaurants,setAllRestaurants] = useState([]);
 
-    let filteredRestaurants = allRestaurants.filter((restaurant) =>{
-
-        return restaurant?.data?.name?.toLowerCase().includes(searchVal?.toLowerCase());
-    })
-    if(!searchVal){
-        filteredRestaurants = allRestaurants;
-    }
     
     
+    let filteredRestaurants = filterRestaurant(allRestaurants,searchVal)
+    
 
-
+    //useEffect to get the restaurants from API
     useEffect(()=>{
         getRestaurants();
     },[])
+
+//     //useEffect to implement debouncing on search
+//     useEffect(()=>{
+//         filteredRestaurants = setTimeout(()=>{
+//             filterRestaurant.call(this,allRestaurants,searchVal)
+//         }, 3000);
+//         return () => clearTimeout(filteredRestaurants);
+// },[searchVal])
 
 
     async function getRestaurants (){

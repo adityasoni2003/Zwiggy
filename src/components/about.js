@@ -1,4 +1,5 @@
 import React from "react"
+import { Outlet } from "react-router"
 import Profile from "./profile"
 
 class About extends React.Component{
@@ -6,7 +7,7 @@ class About extends React.Component{
         return (
             <>
                 <h1>Welcome to Our About Page</h1>
-                <Profile/>
+                <Outlet/>
             </>
 
         )
