@@ -25,7 +25,8 @@ const RestaurantMenu = ()=>{
         console.log(data);
 
         }
-    return (!restaurant)? <Shimmer/> :(
+    if(!restaurant) return null // early return
+    return(
         <div>
             <h1>Restaurant Name : {restaurant.data.name}</h1>
             <img src={IMG_CDN_URL+restaurant.data.cloudinaryImageId} alt="Restaurant Image" />

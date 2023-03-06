@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import ReactDOM  from 'react-dom/client'
 
 import Header from './components/header'
 import Body from './components/body'
 import Footer from './components/footer'
 import { createBrowserRouter , Outlet, RouterProvider } from 'react-router-dom'
-import Error from './components/error'
-import About from './components/about'
-import Contact from './components/contact'
-import RestaurantMenu from './components/restaurantMenu'
-import Profile from './components/profile'
+import Shimmer from './components/shimmer'
 
-
+const RestaurantMenu = lazy(()=>import('./components/restaurantMenu'));
+const Contact = lazy(()=>import('./components/contact'));
+const About = lazy(()=>import('./components/about'));
+const Profile = lazy(()=> import('./components/profile'));
+const Error = lazy(()=>import('./components/error'));
 
 
 const App = ()=>{
@@ -27,21 +27,22 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
-    errorElement:<Error/>,
+    errorElement:<Suspense><Error/></Suspense>,
     children:[
       {path: "/",
       element: <Body/>,},
       {path: "/about",
-      element: <About/>,
+      element: <Suspense fallback={<Shimmer/>}><About/></Suspense>,
       children:[{
         path:'profile',
-        element:<Profile/>,
+        element:<Suspense><Profile/></Suspense>,
       }]},
       {path: "/contact",
-      element: <Contact/>,},
+      element: <Suspense fallback={<Shimmer/>}><Contact/></Suspense>,},
       {path:"/restaurant/:id",
-      element:<RestaurantMenu/>,}
+      element:<Suspense fallback={<Shimmer/>}><RestaurantMenu/></Suspense>,}
     ]
+    
   },
 ]);
 

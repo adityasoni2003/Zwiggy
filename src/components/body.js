@@ -23,13 +23,7 @@ const Body = ()=>{
         getRestaurants();
     },[])
 
-//     //useEffect to implement debouncing on search
-//     useEffect(()=>{
-//         filteredRestaurants = setTimeout(()=>{
-//             filterRestaurant.call(this,allRestaurants,searchVal)
-//         }, 3000);
-//         return () => clearTimeout(filteredRestaurants);
-// },[searchVal])
+
 
 
     async function getRestaurants (){
