@@ -1,10 +1,12 @@
 
 import { useEffect, useState } from "react"
 import RestaurantCard from "./restaurant"
-import { SWIGGY_API_URL } from "../config"
+import { SWIGGY_API_URL } from "../config";
+
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import {filterRestaurant} from '../utils/helper'
+import useIsOnline from "../utils/useIsOnline";
 
 
 
@@ -15,14 +17,24 @@ const Body = ()=>{
 
     
     
-    let filteredRestaurants = filterRestaurant(allRestaurants,searchVal)
+    let filteredRestaurants = filterRestaurant(allRestaurants,searchVal);
     
-
+    
+    
+   
     //useEffect to get the restaurants from API
     useEffect(()=>{
+        
+
+        
         getRestaurants();
+        
+        
+        
     },[])
 
+    
+   
 
 
 
@@ -41,10 +53,17 @@ const Body = ()=>{
 
     }
 
+    const isOnline = useIsOnline();
+    if(!isOnline) return <>
+    <h1 className="text-4xl font-semibold m-4">🛑 You are Offline.Please Turn On Your Internet</h1>
+    <Shimmer/>
+
+    </>
+
     return (
-        <div className="body">
-            <div className="searchBar">
-                <input type="text" name="searchBar" value={searchVal} placeholder='Search Restaurant'
+        <div className="mt-4 mx-12">
+            <div className="my-4">
+                <input type="text" className="text-black w-80 font-medium text-xl rounded-lg p-1 border-2 border-black" name="searchBar" value={searchVal} placeholder='Search Restaurant'
                 onChange={(e)=>{
                     setSearchVal(e.target.value)
                 }}/>
@@ -59,7 +78,7 @@ const Body = ()=>{
                     <Shimmer/>
                     
             ):(
-            <div className="container">
+            <div className="flex flex-wrap gap-10">
                 {
                     filteredRestaurants.map((restaurant)=>{
 
