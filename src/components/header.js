@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import logo from '../assets/logoModified.png'
@@ -7,6 +8,7 @@ import useIsOnline from '../utils/useIsOnline'
 const Header = ()=>{
     const [isLoggedIn , setLogStatus] = useState(false);
     const isOnline = useIsOnline();
+    const cartItems = useSelector(store => store?.cartSlice?.items);
 
     return (
         <div className='flex w-full justify-between bg-pink-300 shadow-lg  '>
@@ -26,7 +28,7 @@ const Header = ()=>{
                 <li>Contact Us</li>
                 </Link>
                 <Link to={"/cart"}>
-                <li>Cart</li>
+                <li>Cart - {cartItems?.length}</li>
                 </Link>
             </ul>
             {

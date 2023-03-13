@@ -13,5 +13,4 @@ export const SWIGGY_MENU_URL =
 export const SHIMMER_CARD_UNITS = 10 ;
 
 
-export const SWIGGY_API_URL="https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
 

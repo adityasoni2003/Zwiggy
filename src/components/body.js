@@ -1,12 +1,13 @@
 
-import { useEffect, useState } from "react"
+import { useEffect, useState,useContext } from "react"
 import RestaurantCard from "./restaurant"
-import { SWIGGY_API_URL } from "../config";
+
 
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import {filterRestaurant} from '../utils/helper'
 import useIsOnline from "../utils/useIsOnline";
+import { locationContext } from "../main";
 
 
 
@@ -14,33 +15,26 @@ const Body = ()=>{
 
     const [searchVal , setSearchVal] = useState();
     const [allRestaurants,setAllRestaurants] = useState([]);
-
-    
-    
+    const cordinates = useContext(locationContext);
+   
     let filteredRestaurants = filterRestaurant(allRestaurants,searchVal);
     
-    
-    
-   
     //useEffect to get the restaurants from API
     useEffect(()=>{
-        
-
-        
-        getRestaurants();
-        
-        
-        
-    },[])
-
+        getRestaurants();   
+    },[cordinates])
     
-   
-
-
+    
+    
+    
+    
+    
+    
+  
 
     async function getRestaurants (){
         try {
-            const res = await fetch(SWIGGY_API_URL);
+            const res = await fetch(`https://corsanywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=${cordinates?.latitude}&lng=${cordinates?.longitude}&page_type=DESKTOP_WEB_LISTING`);
             const dataJson = await res.json();
             setAllRestaurants(dataJson?.data?.cards[2]?.data?.data?.cards);
             
@@ -71,7 +65,7 @@ const Body = ()=>{
             </div>
 
             {
-            allRestaurants.length === 0 ? (
+            (allRestaurants?.length === 0 || cordinates.latitude == undefined )? (
                 
                 
 
@@ -80,7 +74,7 @@ const Body = ()=>{
             ):(
             <div className="flex flex-wrap gap-10">
                 {
-                    filteredRestaurants.map((restaurant)=>{
+                    filteredRestaurants?.map((restaurant)=>{
 
                         return(
                             <Link to={`restaurant/${restaurant.data.id}`}>
