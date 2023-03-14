@@ -65,13 +65,8 @@ const Body = ()=>{
             </div>
 
             {
-            (allRestaurants?.length === 0 || cordinates.latitude == undefined )? (
-                
-                
-
-                    <Shimmer/>
-                    
-            ):(
+            (allRestaurants?.length === 0 || cordinates.latitude == undefined )? (<Shimmer/>):
+            (
             <div className="flex flex-wrap gap-10">
                 {
                     filteredRestaurants?.map((restaurant)=>{

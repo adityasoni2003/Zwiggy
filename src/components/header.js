@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/logoModified.png'
 import useIsOnline from '../utils/useIsOnline'
 
+
 const Header = ()=>{
     const [isLoggedIn , setLogStatus] = useState(false);
     const isOnline = useIsOnline();
-    const cartItems = useSelector(store => store?.cartSlice?.items);
+    const cartItems = useSelector(store => store?.cart?.items);
+    
 
     return (
         <div className='flex w-full justify-between bg-pink-300 shadow-lg  '>
